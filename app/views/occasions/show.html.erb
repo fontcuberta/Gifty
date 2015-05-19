@@ -6,3 +6,5 @@
 <li> <%= user_in_event.name %></li>
 <% end %>
 </ul>
+
+<%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %>

@@ -53,7 +53,7 @@ class OccasionsController < ApplicationController
     return
     end
     occasion.destroy
-    render json: occasion
+    redirect_to occasions_index_path(@user)
   end
 
 #--------------------------------
