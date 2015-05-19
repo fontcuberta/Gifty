@@ -1,0 +1,13 @@
+<h1>Welcome, <%= @user.name %></h1>
+
+<p>This are your current events</p>
+
+<ul>
+    <% @occasions.each do |occasion| %> 
+	<li>
+		<%= occasion.description %>
+	</li>
+	<% end %>
+</ul>
+
+<p>Expired events</p>
