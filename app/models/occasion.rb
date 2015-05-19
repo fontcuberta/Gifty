@@ -1,5 +1,7 @@
 class Occasion < ActiveRecord::Base
-	has_and_belongs_to_many :users
+	has_many :happenings
+	has_many :users, through: :happenings
 	has_one :receiver
 	has_many :gifts
+
 end

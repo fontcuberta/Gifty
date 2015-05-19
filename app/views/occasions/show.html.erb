@@ -1,0 +1,8 @@
+<h1><%= @occasion.description %></h1>
+
+
+<ul>
+<% @occasion.users.each do |user_in_event|%>
+<li> <%= user_in_event.name %></li>
+<% end %>
+</ul>

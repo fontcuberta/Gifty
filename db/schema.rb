@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150518174023) do
+ActiveRecord::Schema.define(version: 20150519153122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,16 +26,19 @@ ActiveRecord::Schema.define(version: 20150518174023) do
     t.integer  "occasion_id"
   end
 
+  create_table "happenings", force: :cascade do |t|
+    t.integer "occasion_id"
+    t.integer "user_id"
+  end
+
+  add_index "happenings", ["occasion_id"], name: "index_happenings_on_occasion_id", using: :btree
+  add_index "happenings", ["user_id"], name: "index_happenings_on_user_id", using: :btree
+
   create_table "occasions", force: :cascade do |t|
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.datetime "expiry_date"
-  end
-
-  create_table "occasions_users", force: :cascade do |t|
-    t.integer "occasion_id"
-    t.integer "user_id"
   end
 
   create_table "receivers", force: :cascade do |t|

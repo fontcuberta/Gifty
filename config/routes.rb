@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  root to: "occasions#index"
+  root to: "occasions#index", as: :occasions_index
   devise_for :users
+  get "/users/:user_id/occasions/new" => 'occasions#new', as: :new_user_occasion
+  get "/users/:user_id/occasions/:id" =>   "occasions#show", as: :user_occasion
+  post "/users/:user_id/occasions/" =>   "occasions#create", as: :user_occasions
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

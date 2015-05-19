@@ -1,0 +1,19 @@
+<% if @occasion.errors.any? %>
+	<ul>
+		<% @occasion.errors.full_messages.each do |error| %>
+			<li><%= error %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= form_for [@user, @occasion] do |f| %>
+
+	<%= f.label :description %>
+	<%= f.text_field :description %>
+
+	<%= f.label :expiry_date %>
+	<%= f.date_field :expiry_date, class: "date" %>
+
+	<%= f.submit(@occasion.new_record? ? 'Create' : 'Update') %>
+
+<% end %>

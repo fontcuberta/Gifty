@@ -5,9 +5,12 @@
 <ul>
     <% @occasions.each do |occasion| %> 
 	<li>
-		<%= occasion.description %>
+    <%= link_to occasion.description, user_occasion_path(@user, occasion) %>
 	</li>
 	<% end %>
 </ul>
 
 <p>Expired events</p>
+
+
+    <%= link_to "New Event", new_user_occasion_path(@user) %> 
