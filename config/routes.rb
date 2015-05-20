@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get "/users/:user_id/occasions/:id" =>   "occasions#show", as: :user_occasion
   post "/users/:user_id/occasions/" =>   "occasions#create", as: :user_occasions
   delete "/users/:user_id/occasions/:id" =>   "occasions#destroy"
+  get "/receivers/new/:occasion_id" => "receivers#new", as: :new_receiver
+  post "/receivers" => "receivers#create", as: :receivers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

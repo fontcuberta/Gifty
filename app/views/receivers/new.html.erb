@@ -1,0 +1,22 @@
+  <p>Perdona, ¿y el modal?</p>
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+  <%= form_for [@occasion, @receiver], url: receivers_path do |f| %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+
+    <%= f.submit( 'OK') %>
+
+  <% end %>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+  </div>
