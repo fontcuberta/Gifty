@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
+# Use SCSS for stylesheets I need this to work with materialize gem
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -47,4 +47,7 @@ end
 
 #Use devise for user authentication and authorization
   gem 'devise'
+
+#Use materialize for styling --> http://materializecss.com/
+  gem 'materialize-sass'
 

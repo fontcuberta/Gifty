@@ -1,10 +1,26 @@
-<h1><%= @occasion.description %></h1>
+<div class= "container">
+	<div>
+		<h1><%= @occasion.description %></h1>
+	</div>
+
+    <div id = "receiver">
+
+    	<form action="#" id="receiver_name" method="post">
+    		<input style = "display: inline" id="person_name" name="name" type="text" />
+    		<input style = "display: inline"name="commit" type="button" value="✓" />
+		</form>
+
+    </div>
+	<div id = "Users in this occasion">
+		<h2>Friends in this event</h2>
+		<ul>
+			<% @occasion.users.each do |user_in_event|%>
+				<li> <%= user_in_event.name %></li>
+			<% end %>
+		</ul>
+	</div>
 
 
-<ul>
-<% @occasion.users.each do |user_in_event|%>
-<li> <%= user_in_event.name %></li>
-<% end %>
-</ul>
-
-<%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %>
+	<small> Deadline: <%= @occasion.expiry_date.strftime("%A %d, %b %Y") %></small><br/>
+	<%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %>
+</div>

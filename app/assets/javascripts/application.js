@@ -14,3 +14,5 @@
 //= require jquery_ujs
 // require turbolinks
 // require_tree .
+//I need ro requier materialize related javascript
+//= require materialize-sprockets

@@ -12,7 +12,6 @@ class OccasionsController < ApplicationController
   	@user = User.find params[:user_id]
   	@occasion = @user.occasions.create occasion_params
   	if @occasion.valid?
-      binding.pry
       flash[:notice] = "You just created a new event!"
   		redirect_to occasions_index_path(@user)
   	else

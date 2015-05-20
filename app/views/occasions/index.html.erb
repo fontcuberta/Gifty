@@ -1,16 +1,18 @@
-<h1>Welcome, <%= @user.name %></h1>
+<div class="container">
+	<h1>Welcome, <%= @user.name %></h1>
 
-<p>This are your current events</p>
+	<p>This are your current events</p>
 
-<ul>
-    <% @occasions.each do |occasion| %> 
-	<li>
-    <%= link_to occasion.description, user_occasion_path(@user, occasion) %>
-	</li>
-	<% end %>
-</ul>
+	<ul>
+	    <% @occasions.each do |occasion| %> 
+		<li>
+	    <%= link_to occasion.description, user_occasion_path(@user, occasion) %>
+		</li>
+		<% end %>
+	</ul>
 
-<p>Expired events</p>
+	<p>Expired events</p>
 
 
-    <%= link_to "New Event", new_user_occasion_path(@user) %> 
+	    <%= link_to "New Event", new_user_occasion_path(@user) %> 
+</div>
