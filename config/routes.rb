@@ -8,15 +8,18 @@ Rails.application.routes.draw do
   get "/receivers/new/:occasion_id" => "receivers#new", as: :new_receiver
   post "/receivers/:occasion_id" => "receivers#create", as: :receivers
 
-  get "/gifts/index" =>   "gifts#index", as: :gifts
-  get "/gifts/update/:occasion_id/:user_id" => "gifts#edit", as: :edit_gift  
-  put "/gifts/update/:occasion_id" => "gifts#update"
+  get "/gifts/index/:occasion_id" =>   "gifts#index", as: :gifts
+  get "/gifts/update/:gift_id/:occasion_id/" => "gifts#edit", as: :edit_gift  
+  put "/gifts/update/:gift_id/:occasion_id/" => "gifts#update"
+  get "/gifts/remove/:gift_id/:occasion_id/" => "gifts#remove", as: :remove_gift  
+  put "/gifts/remove/:gift_id/:occasion_id/" => "gifts#remove"
 
   get "/avatars/new" => "avatars#new", as: :new_avatar
   post "/avatars/create" => "avatars#create", as: :avatars
 
   get "/happenings/new/:user_id/:occasion_id" => "happenings#new", as: :new_happening
   post "/happenings/:user_id/:occasion_id" => "happenings#create", as: :happenings
+  delete "/happenings/:user_id/:occasion_id" =>   "happenings#destroy"
 
 
 

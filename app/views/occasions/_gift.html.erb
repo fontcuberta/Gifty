@@ -1,0 +1,17 @@
+<div class="row">
+    <div id="gifts-section">
+        <div class="col s8">
+            <div class="card large">
+                <div class="card-image">
+                    <%= image_tag @gift.url %></span>
+                </div>
+                <div class="card-content">
+                    <li><b>Store: </b><%= @gift.store %> </li>
+                    <li><b>Price: </b><%= @gift.price/@occasion.users.size %>€ for each friend. </li>
+                </div>
+                <div class="card-action">
+                    <a href=<%= gifts_path(@occasion) %>>CHANGE</a>
+                    <a href=<%= remove_gift_path(@gift, @occasion) %>>REMOVE</a>
+                </div>
+          </div>
+        </div>

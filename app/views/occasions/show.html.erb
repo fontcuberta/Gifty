@@ -13,10 +13,10 @@
 
     <div id = "receiver">
 
-      <form action="#" id="receiver_name" method="post">
-        <input style = "display: inline" id="person_name" name="name" type="text" />
+ <!--      <form action="#" id="receiver_name" method="post"> -->
+        <input style = "display: inline" id="person_name" name="name" type="text" placeholder= "Receivers name here" />
         <button data-target="modal1" class="btn modal-trigger">✓</button>
-    </form>
+<!--     </form> -->
     </div>    
   <% end %>
 
@@ -30,7 +30,7 @@
         <fieldset class="fields">
           <div class="field">
            <%= form.label :name %>
-           <%= form.text_field :name %>
+           <%= form.text_field :name, :value => "Psstttt Isa te falta algo" %>
           </div>
 
           <div class="field">
@@ -60,15 +60,20 @@
 
 
 
-	<div id = "Users in this occasion">
 		<h2>Friends in this event</h2>
-			<% @occasion.users.each do |user_in_event|%>
-      <div style="display: inline-block margin:10px">
-				<%= image_tag user_in_event.avatar.url(:thumb), class: "circle avatar z-depth-1" %>
-      </div>
+
+        <ul class="collection">
+			    <% @occasion.users.each do |user_in_event|%>
+            <li class="collection-item avatar">
+
+              <%= image_tag user_in_event.avatar.url(:thumb), class: "circle avatar z-depth-1"  %>
+              <span class="title"><%= user_in_event.name%></span>
+              <p><%= link_to 'Remove', happenings_path(user_in_event, @occasion), method: :delete %></p>
+              <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
+            </li>
 			<% end %>
-      <i class='mdi-social-person-add' id="add-user"></i>
-	</div>
+      <i class='mdi-social-person-add' id="add-user">Add more friends</i>
+      </ul>
 
     <!-- THIS IS THE MODAL CODE TO ADD A USER!!! -->
     <div id="modal2" class="modal modal-fixed-footer">
@@ -93,55 +98,19 @@
 
 	<small> Deadline: <%= @occasion.expiry_date.strftime("%A %d, %b %Y") %></small><br/>
 
+
+
+     <h4>You are shopping THIS amazing Gift</h4>
+     <% if @occasion.gifts.size  == 0%>
+         <%= render 'gift_default' %>
+     <% else %>
+         <% @gift = @occasion.gifts.first%>
+         <%= render 'gift' %>
+     <% end %>
 </div>
-
-     <h4>Gift options</h4>
-     <div class="row">
-     <div id="gifts-section">
-        <div class="col s2">
-          <div class="card large">
-            <div class="card-image">
-              <%= image_tag("gifty-default.png") %></span>
-            </div>
-            <div class="card-content">
-              <p>Each friend pays:</p>
-            </div>
-            <div class="card-action">
-              <a href="<%= gifts_path %>">CHANGE</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s2">
-          <div class="card large">
-            <div class="card-image">
-              <%= image_tag("gifty-default.png") %></span>
-            </div>
-            <div class="card-content">
-              <p>Each friend pays:</p>
-            </div>
-            <div class="card-action">
-              <a href="<%= gifts_path %>">CHANGE</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s2">
-          <div class="card large">
-            <div class="card-image">
-              <%= image_tag("gifty-default.png") %></span>
-            </div>
-            <div class="card-content">
-              <p>Each friend pays:</p>
-            </div>
-            <div class="card-action">
-              <a href="<%= gifts_path %>">CHANGE</a>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
+<div>
 	<%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %>
+</div>
 
 
 
@@ -153,6 +122,7 @@ $(document).ready(function(){
 
 <script>
 $('#add-user').click(function(){
+  $('#person_name').val();
   $('#modal2').openModal();
 });
 </script>

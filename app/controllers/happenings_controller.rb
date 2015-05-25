@@ -24,5 +24,14 @@ class HappeningsController < ApplicationController
   	end
   end
 
+#DELETE
+  def destroy
+    @occasion = Occasion.find_by(id: params[:occasion_id])
+    @user = User.find_by(id: params[:user_id])
+    @occasion.users.delete(@user)
+    redirect_to user_occasion_path(current_user, @occasion)
+  end
+
+
 end
 

@@ -1,0 +1,15 @@
+<div class="row">
+    <div id="gifts-section">
+        <div class="col s8">
+            <div class="card large">
+                <div class="card-image">
+                    <%= image_tag("gifty-default.png") %></span>
+                </div>
+                <div class="card-content">
+                    <p>Select a gift for <%= @receiver.name %></p>
+                </div>
+                <div class="card-action">
+                    <a href=<%= gifts_path(@occasion) %>>CHANGE</a>
+                </div>
+            </div>
+        </div>
