@@ -1,4 +1,6 @@
 <div class="container">
+
+	<%= image_tag @user.avatar.url(:thumb), class: "circle avatar z-depth-1" %>
 	<h1>Welcome, <%= @user.name %></h1>
 
 	<p>This are your current events</p>

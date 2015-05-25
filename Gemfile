@@ -50,4 +50,6 @@ end
 
 #Use materialize for styling --> http://materializecss.com/
   gem 'materialize-sass'
+#Use paperclip for uploading avatar's picture
 
+  gem "paperclip", "~> 4.2"

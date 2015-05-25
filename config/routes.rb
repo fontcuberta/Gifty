@@ -6,7 +6,24 @@ Rails.application.routes.draw do
   post "/users/:user_id/occasions/" =>   "occasions#create", as: :user_occasions
   delete "/users/:user_id/occasions/:id" =>   "occasions#destroy"
   get "/receivers/new/:occasion_id" => "receivers#new", as: :new_receiver
-  post "/receivers" => "receivers#create", as: :receivers
+  post "/receivers/:occasion_id" => "receivers#create", as: :receivers
+
+  get "/gifts/index" =>   "gifts#index", as: :gifts
+  get "/gifts/update/:occasion_id/:user_id" => "gifts#edit", as: :edit_gift  
+  put "/gifts/update/:occasion_id" => "gifts#update"
+
+  get "/avatars/new" => "avatars#new", as: :new_avatar
+  post "/avatars/create" => "avatars#create", as: :avatars
+
+  get "/happenings/new/:user_id/:occasion_id" => "happenings#new", as: :new_happening
+  post "/happenings/:user_id/:occasion_id" => "happenings#create", as: :happenings
+
+
+
+
+   # get "/happenings/new/:user_id/:occasion_id" => "happenings#new" as: :new_happening
+  # post "/happenings/new/:user_id/:occasion_id" => "happenings#create" as: :happenings
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

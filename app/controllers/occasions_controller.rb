@@ -28,7 +28,9 @@ class OccasionsController < ApplicationController
 
  def show
     @occasion = Occasion.find_by(id: params[:id])
-
+    @receiver = Receiver.new
+    @users = User.all 
+    @gifts = Gift.where(occasion_id = ?", params[:id])
   end
 
 #UPDATE
@@ -54,6 +56,7 @@ class OccasionsController < ApplicationController
     occasion.destroy
     redirect_to occasions_index_path(@user)
   end
+
 
 #--------------------------------
 #Private Methods
