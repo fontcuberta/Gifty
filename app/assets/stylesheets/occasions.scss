@@ -1,3 +1,31 @@
 // Place all the styles related to the occasions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.container-event {
+	padding-top: 20px;
+	margin-left: 40px;
+}
+
+.occasion-receiver {
+	max-width: 550px;
+	margin-left: 60px;
+}
+
+.friends-in-event {
+	max-width: 550px;
+	margin-left: 200px;
+}
+
+.article {
+	float: left;
+}
+
+.aside {
+	float: rigth;
+}
+
+.friend-in-event {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+}

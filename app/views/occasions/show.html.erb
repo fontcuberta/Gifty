@@ -1,24 +1,20 @@
-<div class= "container">
+
+<section class="row">
+<article class="col s8">
 	<div>
 		<h1><%= @occasion.description %></h1>
 	</div>
 
-
+<div class="occasion-receiver">
   <% if @occasion.receiver %>
-
     <h4 class="receiver">To: <%= @occasion.receiver.name %></h4>
-
-
   <% else %>
-
-    <div id = "receiver">
-
- <!--      <form action="#" id="receiver_name" method="post"> -->
-        <input style = "display: inline" id="person_name" name="name" type="text" placeholder= "Receivers name here" />
-        <button data-target="modal1" class="btn modal-trigger">✓</button>
-<!--     </form> -->
-    </div>    
+ <!--  FORM FOR RECEIVER -->
+    <input style = "display: inline" id="person_name" name="name" type="text" placeholder= "Receivers name here" />
+    <button data-target="modal1" class="btn modal-trigger button">✓</button>
+<!--  END OF FORM-->
   <% end %>
+</div>    
 
     <!-- THIS IS THE MODAL CODE. PLEASE REMOVE EVERYTHING IF THIS IS TOO MUCH!!! -->
     <!-- Modal Structure -->
@@ -57,9 +53,7 @@
     </div>
     <!-- END OF THE MODAL CODE!!! -->
 
-
-
-
+<section class="friends-in-event">
 		<h2>Friends in this event</h2>
 
         <ul class="collection">
@@ -74,6 +68,7 @@
 			<% end %>
       <i class='mdi-social-person-add' id="add-user">Add more friends</i>
       </ul>
+</section>
 
     <!-- THIS IS THE MODAL CODE TO ADD A USER!!! -->
     <div id="modal2" class="modal modal-fixed-footer">
@@ -97,21 +92,23 @@
 
 
 	<small> Deadline: <%= @occasion.expiry_date.strftime("%A %d, %b %Y") %></small><br/>
-
-
-
-     <h4>You are shopping THIS amazing Gift</h4>
+</article>
+    <!-- GIFT SECTION -->
+  <aside class="aside col s4">
+     <h4>Your Gift</h4>
      <% if @occasion.gifts.size  == 0%>
          <%= render 'gift_default' %>
      <% else %>
          <% @gift = @occasion.gifts.first%>
          <%= render 'gift' %>
      <% end %>
-</div>
+  </aside>
 <div>
+  <%= link_to 'Expire Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: "Are you sure? You won't be able to change it anymore"} %><br>
 	<%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %>
-</div>
 
+</section>
+<%= link_to "Back", occasions_index_path %>
 
 
 <script>
@@ -126,4 +123,20 @@ $('#add-user').click(function(){
   $('#modal2').openModal();
 });
 </script>
+
+
+<script>
+$(document).ready(function(){
+  var currentDate = new Date();
+  var exp_date = new Date(<%= @occasion.expiry_date.to_f*1000%>);
+  if (currentDate < exp_date) {
+    console.log('Hola cabeza de chola');
+  }
+  else {
+    $('#change_gift').attr("class", "disabled");
+    $('#remove_gift').attr("class", "disabled");
+  }
+});
+</script>
+
  

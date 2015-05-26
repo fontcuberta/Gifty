@@ -11,13 +11,13 @@ class OccasionsController < ApplicationController
   def create
   	@user = User.find params[:user_id]
   	@occasion = @user.occasions.create occasion_params
-  	if @occasion.valid?
-      flash[:notice] = "You just created a new event!"
-  		redirect_to occasions_index_path(@user)
-  	else
-      flash.now[:alert] = "Ooops! Read all your mistakes"
-  		render 'new'
-  	end
+    	if @occasion.valid?
+        flash[:notice] = "You just created a new event!"
+    		redirect_to occasions_index_path(@user)
+    	else
+        flash.now[:alert] = "Ooops! Read all your mistakes"
+    		render 'new'
+    	end
   end
 
 #SHOW OCCASIONS (ALL OF THEM) - FILTERED BY USER

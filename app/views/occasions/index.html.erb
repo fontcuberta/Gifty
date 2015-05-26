@@ -1,19 +1,30 @@
 <div class="container">
 
-	<%= image_tag @user.avatar.url(:thumb), class: "circle avatar z-depth-1" %>
-	<h1>Welcome, <%= @user.name %></h1>
-
+	<div><%= image_tag @user.avatar.url(:thumb), class: "circle avatar z-depth-1 inline" %>
+		<h1>Welcome, <%= @user.name %></h1>
+    </div>
 	<p>This are your current events</p>
 
 	<ul>
 	    <% @occasions.each do |occasion| %> 
-		<li>
-	    <%= link_to occasion.description, user_occasion_path(@user, occasion) %>
-		</li>
+	      <% if occasion.expiry_date > Date.today %>
+	          <li>
+	          	<%= link_to occasion.description, user_occasion_path(@user, occasion) %>
+	          </li>
+	      <% end %>
 		<% end %>
 	</ul>
 
 	<p>Expired events</p>
+	<ul>
+	    <% @occasions.each do |occasion| %>
+	      <% if occasion.expiry_date < Date.today %>
+	          <li>
+	          	<%= link_to occasion.description, user_occasion_path(@user, occasion) %>
+	          </li>
+	      <% end %>
+		<% end %>
+	</ul>
 
 
 	    <%= link_to "New Event", new_user_occasion_path(@user) %> 
