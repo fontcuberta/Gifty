@@ -58,7 +58,7 @@
 
         <ul class="collection">
 			    <% @occasion.users.each do |user_in_event|%>
-            <li class="collection-item avatar">
+            <li class="collection-item avatar user-width">
 
               <%= image_tag user_in_event.avatar.url(:thumb), class: "circle avatar z-depth-1"  %>
               <span class="title"><%= user_in_event.name%></span>
@@ -75,10 +75,12 @@
       <div class="modal-content">
         <h4>Add a member</h4>
         <h2>Your friends</h2>
-            <ul>
+            <ul class="collection">
                 <% @users.each do |user|%>
                   <% unless @occasion.users.include? user %>
-                      <a href=<%= new_happening_path(user, @occasion)%>><li><%= image_tag user.avatar.url(:thumb), class: "circle avatar z-depth-1" %> - <%= user.name%></li></a>
+                      <li class="collection-item avatar user-width">
+                        <a href=<%= new_happening_path(user, @occasion)%>><%= image_tag user.avatar.url(:thumb), class: "circle avatar z-depth-1" %> <span class="title"><%= user.name%></span></a>
+                      </li>
                     <% end %>
                 <% end %>
             </ul>
@@ -89,6 +91,14 @@
       </div>
     </div>
     <!-- END OF THE MODAL CODE FOR ADDING A USER!!! -->
+
+    <!-- THIS IS THE MODAL CODE TO ALERT THIS EVENT IS EXPIRED!!! -->
+
+         <%= render 'expired_alert' %>
+
+
+    <!-- END OF THE MODAL CODE TO ALERT THIS EVENT IS EXPIRED!!! -->
+
 
 
 	<small> Deadline: <%= @occasion.expiry_date.strftime("%A %d, %b %Y") %></small><br/>
@@ -112,20 +122,7 @@
 
 
 <script>
-$(document).ready(function(){
-  $('.modal-trigger').leanModal();
-});
-</script>
 
-<script>
-$('#add-user').click(function(){
-  $('#person_name').val();
-  $('#modal2').openModal();
-});
-</script>
-
-
-<script>
 $(document).ready(function(){
   var currentDate = new Date();
   var exp_date = new Date(<%= @occasion.expiry_date.to_f*1000%>);
@@ -135,8 +132,27 @@ $(document).ready(function(){
   else {
     $('#change_gift').attr("class", "disabled");
     $('#remove_gift').attr("class", "disabled");
+    $('#add-user').hide();
+    $('#modal_expired_alert').openModal();
   }
 });
+
 </script>
+
+<script>
+$(document).ready(function(){
+  $('.modal-trigger').leanModal();
+});
+
+</script>
+<script>
+$('#add-user').click(function(){
+  $('#person_name').val();
+  $('#modal2').openModal();
+});
+
+</script>
+
+
 
  
