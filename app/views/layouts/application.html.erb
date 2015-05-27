@@ -3,6 +3,7 @@
 <html>
 <head>
   <title>Gifty</title>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -26,7 +27,27 @@
 
 </body>
 
-
+        <footer class="page-footer grey lighten-1 footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">@fontcuberta</h5>
+                <p class="grey-text text-lighten-4">Buying a gift this holiday season for someone special? Gifty helps you and your friends compares prices for products and fundraise the perfect gift for any occasion.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">About Us</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="https://about.me/fontcuberta">about.me</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+               Gifty © 2015
+            </div>
+          </div>
+        </footer>
 
 
 </html>
