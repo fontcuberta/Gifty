@@ -12,7 +12,12 @@
 }
 
 .friends-in-event {
-	max-width: 550px;
+	max-width: 500px;
+	margin-left: 200px;
+}
+
+.select-friend {
+	width: 800px !important;
 	margin-left: 200px;
 }
 
@@ -22,12 +27,6 @@
 
 .aside {
 	float: rigth;
-}
-
-.friend-in-event {
-	display: inline-block;
-	width: 200px;
-	height: 200px;
 }
 
 .user-width {

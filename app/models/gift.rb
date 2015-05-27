@@ -1,3 +1,3 @@
 class Gift < ActiveRecord::Base
-	belongs_to :occasion
+	has_many :occasions
 end

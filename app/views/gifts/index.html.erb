@@ -10,7 +10,7 @@
                   </div>
                   <div class="card-content">
                     <span class="card-title activator grey-text text-darken-4"><%= gift.description %><i class="mdi-navigation-more-vert right"></i></span>
-                    <p><%= link_to "Select", edit_gift_path(gift, @occasion) %></p>
+                    <p><%= link_to "Select", update_occasion_path(gift, @occasion), method: :put %></p>
                   </div>
                   <div class="card-reveal">
                     <span class="card-title grey-text text-darken-4"><%= gift.description %> <i class="mdi-navigation-close right"></i></span>

@@ -21,8 +21,8 @@ I need. For now, I just wanna know how materialize works*/
 // Mixins
 @import "materialize/components/prefixer";
 @import "materialize/components/mixins";
-@import "materialize/components/color";
 
+@import "materialize/components/color";
 // Variables;
 @import "materialize/components/variables";
 
@@ -145,10 +145,18 @@ a .header {
 }
 
 
+.landing_page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-image: url(home.jpg) !important;
+  }
+
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    background-image: url(home.jpg);
   }
 
   main {
@@ -184,7 +192,7 @@ a.disabled {
 }
 
 
-video#bgvid {
+#bgvid {
 position: fixed;
 top: 50%;
 left: 50%;
@@ -195,7 +203,15 @@ height: auto;
 z-index: -100;
 -webkit-transform: translateX(-50%) translateY(-50%);
 transform: translateX(-50%) translateY(-50%);
-background: url(https://vimeo.com/121108629) no-repeat;
 background-size: cover;
+}
+
+.form-login {
+  color: white;
+}
+
+h4 {
+  margin-left: 40px;
+  color: white !important;
 }
 

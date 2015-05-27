@@ -3,15 +3,15 @@
         <div class="col s8">
             <div class="card medium">
                 <div class="card-image">
-                    <%= image_tag(@gift.url) %></span>
+                    <%= image_tag(gift.url) %></span>
                 </div>
                 <div class="card-content">
-                    <li><b>Store: </b><%= @gift.store %> </li>
-                    <li><b>Price: </b><%= @gift.price/@occasion.users.size %>€ for each friend. </li>
+                    <li><b>Store: </b><%= gift.store %> </li>
+                    <li><b>Price: </b><%= gift.price/occasion.users.size %>€ for each friend. </li>
                 </div>
                 <div class="card-action">
-                    <a id= "change_gift" href=<%= gifts_path(@occasion) %>>CHANGE</a>
-                    <a id= "remove_gift" href=<%= remove_gift_path(@gift, @occasion) %>>REMOVE</a>
+                    <a id= "change_gift" href=<%= gifts_path(occasion) %>>CHANGE</a>
+                    <a id= "remove_gift" href=<%= remove_gift_path(gift, @occasion) %>>REMOVE</a>
                 </div>
           </div>
         </div>

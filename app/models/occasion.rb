@@ -2,7 +2,7 @@ class Occasion < ActiveRecord::Base
   has_many :happenings
   has_many :users, through: :happenings
   has_one :receiver
-  has_many :gifts
+  belongs_to :gift
   validate :expiry_date_is_in_the_future
 
   def expiry_date_is_in_the_future

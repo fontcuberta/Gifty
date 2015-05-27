@@ -33,16 +33,13 @@ class OccasionsController < ApplicationController
     @gifts = Gift.where(occasion_id = ?", params[:id])
   end
 
+
 #UPDATE
   def update
-    occasion = Occasion.find_by(id: params[:id])
-    unless occasion
-      render json: {error: "This event doesn't exist"},
-      status: 400
-    return
-    end
-    occasion.update(occasion_params)
-    render json: occasion
+    @occasion = Occasion.find params[:occasion_id]
+    @occasion.gift =  Gift.find(params[:gift_id])
+    @occasion.save
+    redirect_to user_occasion_path(current_user, @occasion)
   end
 
 #DELETE

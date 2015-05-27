@@ -9,10 +9,9 @@ class ReceiversController < ApplicationController
   def create
 
   	@occasion = Occasion.find params[:occasion_id]
-  	@receiver = Receiver.create receiver_params
-    @occasion.receiver = @receiver
+  	@receiver = @occasion.build_receiver receiver_params
 
-  	if @receiver.valid?
+  	if @receiver.save
       flash[:notice] = "Receiver added!"
   		redirect_to user_occasion_path(current_user, @occasion)
   	else

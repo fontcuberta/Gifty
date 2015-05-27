@@ -18,19 +18,6 @@ class GiftsController < ApplicationController
   	end
   end
 
-  def edit
-    @occasion = Occasion.find params[:occasion_id]
-    gift = Gift.find params[:gift_id]
-    if @occasion.gifts.size > 0
-      #This release the old gift from this event by setting its occasion_id to nil
-      old_gift = @occasion.gifts.first
-      old_gift.occasion_id = nil
-      old_gift.save
-    end
-    gift.occasion_id = params[:occasion_id]
-    gift.save
-    redirect_to user_occasion_path(current_user, @occasion)
-  end
 
 
 #SHOW GIFTS (ALL OF THEM)

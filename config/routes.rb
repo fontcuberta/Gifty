@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   get "/users/:user_id/occasions/:id" =>   "occasions#show", as: :user_occasion
   post "/users/:user_id/occasions/" =>   "occasions#create", as: :user_occasions
   delete "/users/:user_id/occasions/:id" =>   "occasions#destroy"
+
+  put "/occasions/update/:gift_id/:occasion_id/" => "occasions#update", as: :update_occasion
+
+
+
   get "/receivers/new/:occasion_id" => "receivers#new", as: :new_receiver
   post "/receivers/:occasion_id" => "receivers#create", as: :receivers
 
