@@ -9,9 +9,9 @@
   <% if @occasion.receiver %>
     <h4 class="receiver">To: <%= @occasion.receiver.name %></h4>
   <% else %>
-  
+
  <!--  FORM FOR RECEIVER -->
-    <input style = "display: inline" id="person_name" name="name" type="text" placeholder= "Receivers name here" />
+    <span>Who's getting the gift?</span>
     <button data-target="modal1" class="btn modal-trigger button">✓</button>
 <!--  END OF FORM-->
   <% end %>
@@ -27,7 +27,7 @@
         <fieldset class="fields">
           <div class="field">
            <%= form.label :name %>
-           <%= form.text_field :name, :value => "Psstttt Isa te falta algo" %>
+           <%= form.text_field :name %>
           </div>
 
           <div class="field">
@@ -63,7 +63,7 @@
 
               <%= image_tag user_in_event.avatar.url(:thumb), class: "circle avatar z-depth-1"  %>
               <span class="title"><%= user_in_event.name%></span>
-              <p><%= link_to 'Remove', happenings_path(user_in_event, @occasion), method: :delete %></p>
+              <p id = "remove-user"><%= link_to 'Remove', happenings_path(user_in_event, @occasion), method: :delete %></p>
               <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
             </li>
 			<% end %>
@@ -88,7 +88,7 @@
       </div>
 
       <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">OK</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id="close-add-user">OK</a>
       </div>
     </div>
     <!-- END OF THE MODAL CODE FOR ADDING A USER!!! -->
@@ -116,43 +116,38 @@
      <% end %>
   </aside>
 <div>
-  <%= link_to 'Expire Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: "Are you sure? You won't be able to change it anymore"} %><br>
-	<%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %>
 
+
+<div class="buy-now"><a href = "http://www.amazon.com" target="_blank"><%= image_tag "buy.png"  %></a></div>
 </section>
-<%= link_to "Back", occasions_index_path %>
 
+<div id="navigation">
+  <span class="element-nav">
+    <%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %></span>
+
+  <span class="element-nav">
+    <i class="mdi-image-lens tiny"></i></span>
+
+  <span class="element-nav">
+    <%= link_to "Back", occasions_index_path %>
+  </span>
+</div>
 
 <script>
-
 $(document).ready(function(){
   var currentDate = new Date();
   var exp_date = new Date(<%= @occasion.expiry_date.to_f*1000%>);
   if (currentDate < exp_date) {
-    console.log('Hola cabeza de chola');
   }
   else {
     $('#change_gift').attr("class", "disabled");
     $('#remove_gift').attr("class", "disabled");
     $('#add-user').hide();
+    $('#remove-user').hide();
     $('#modal_expired_alert').openModal();
+    $('#buy-now').show();
   }
 });
-
-</script>
-
-<script>
-$(document).ready(function(){
-  $('.modal-trigger').leanModal();
-});
-
-</script>
-<script>
-$('#add-user').click(function(){
-  $('#person_name').val();
-  $('#modal2').openModal();
-});
-
 </script>
 
 

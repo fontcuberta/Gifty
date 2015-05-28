@@ -57,7 +57,16 @@ I need. For now, I just wanna know how materialize works*/
 
 
 a {
-	color: #663333;
+	color: #AF282D;
+}
+
+.active {
+  color: #AF282D !important;
+}
+
+.textarea.materialize-textarea {
+  border-bottom: 1px solid #AF282D !important;
+  box-shadow: none !important;
 }
 
 body:before { 
@@ -128,7 +137,7 @@ margin-right: 5px;
 }
 
 .button {
-	background-color: #663333 !important;
+	background-color: #AF282D !important;
 }
 
 
@@ -146,17 +155,16 @@ a .header {
 
 
 .landing_page {
+    background-color: #ccc !important;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-image: url(home.jpg) !important;
   }
 
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    background-image: url(home.jpg);
   }
 
   main {

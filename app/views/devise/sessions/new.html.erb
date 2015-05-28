@@ -1,5 +1,6 @@
-<div class="landing-page">
-<div class="container">
+<%= video_tag "party.mp4", id: "bgvid", loop: true, autoplay: true, autobuffer: true, muted: true, poster: "home.jpg" %>
+
+<div class="landing-page container">
 
 
 
@@ -28,10 +29,9 @@
         <% end -%>
 
         <div class="actions">
-            <%= f.submit "Log in", class: "btn modal-trigger button" %>
+            <%= f.submit "Log in", class: "btn button" %>
         </div>
     <% end %>
 </div>
 <%= render "devise/shared/links" %>
-</div>
 </div>

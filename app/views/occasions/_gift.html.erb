@@ -7,7 +7,7 @@
                 </div>
                 <div class="card-content">
                     <li><b>Store: </b><%= gift.store %> </li>
-                    <li><b>Price: </b><%= gift.price/occasion.users.size %>€ for each friend. </li>
+                    <li><b>Price: </b><%= price_for_each_friend(gift, occasion) %>€ for each friend. </li>
                 </div>
                 <div class="card-action">
                     <a id= "change_gift" href=<%= gifts_path(occasion) %>>CHANGE</a>

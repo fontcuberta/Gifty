@@ -12,17 +12,36 @@
 </head>
 
 <header class="header">
-<% if current_user.nil? %>
-    <%= link_to 'Login', new_user_session_path%>
-    <%= link_to 'Signup', new_user_registration_path%>
-<% else %>
-    <%= link_to 'Logout', destroy_user_session_path, method: "delete" %>
-    <%= link_to 'MyProfile', edit_user_registration_path %>
-<% end %>
 
 </header>
 <body>
+<% if current_user.nil? %>
+<div id="navigation">
+  <span class="element-nav">
+    <%= link_to 'Login', new_user_session_path%>
+  </span>
 
+  <span class="element-nav">
+    <i class="mdi-image-lens tiny"></i></span>
+
+  <span class="element-nav">
+    <%= link_to 'Signup', new_user_registration_path%>
+  </span>
+</div>
+<% else %>
+<div id="navigation">
+  <span class="element-nav">
+    <%= link_to 'Logout', destroy_user_session_path, method: "delete" %>
+  </span>
+
+  <span class="element-nav">
+    <i class="mdi-image-lens tiny"></i></span>
+
+  <span class="element-nav">
+    <%= link_to 'MyProfile', edit_user_registration_path %>
+  </span>
+</div>
+<% end %>
 <%= yield %>
 
 </body>
@@ -43,9 +62,9 @@
             </div>
           </div>
           <div class="footer-copyright">
-            <div class="container">
+
                Gifty © 2015
-            </div>
+
           </div>
         </footer>
 

@@ -1,5 +1,5 @@
 class ReceiversController < ApplicationController
-
+  before_action :authenticate_user!
 #CREATE
   def new
   	@occasion = Occasion.find params[:occasion_id]
