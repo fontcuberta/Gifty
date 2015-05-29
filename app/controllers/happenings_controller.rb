@@ -31,7 +31,5 @@ class HappeningsController < ApplicationController
     @occasion.users.delete(@user)
     redirect_to user_occasion_path(current_user, @occasion)
   end
-
-
 end
 

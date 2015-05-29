@@ -1,29 +1,27 @@
-
-    <div class="row">
-
-<h1>Available Gifts</h1>
-			<% @gifts.each do |gift|%>
- <div class="col s3">
-            <div class="card medium">
-                  <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src=<%= gift.url %> >
-                  </div>
-                  <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4"><%= gift.description %><i class="mdi-navigation-more-vert right"></i></span>
-                    <p><%= link_to "Select", update_occasion_path(gift, @occasion), method: :put %></p>
-                  </div>
-                  <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4"><%= gift.description %> <i class="mdi-navigation-close right"></i></span>
-                    <ul>
-                      <li><b>Store: </b><%= gift.store %> </li>
-                      <li><b>Price: </b><%= gift.price %>€ </li>
-                    </ul>
-                  </div>
+<div class="row">
+    <h1>Available Gifts</h1>
+    	<% @gifts.each do |gift|%>
+            <div class="col s3">
+                <div class="card medium">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img class="activator" src=<%= gift.url %> >
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4"><%= gift.description %><i class="mdi-navigation-more-vert right"></i></span>
+                        <p><%= link_to "Select", update_occasion_path(gift, @occasion), method: :put %></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4"><%= gift.description %> <i class="mdi-navigation-close right"></i>
+                        </span>
+                        <ul>
+                            <li><b>Store: </b><%= gift.store %> </li>
+                            <li><b>Price: </b><%= gift.price %>€ </li>
+                        </ul>
+                    </div>
                 </div>
-</div>
-			<% end %>
-
-          <%= link_to "Back", user_occasion_path(current_user, @occasion) %>
+            </div>
+    	<% end %>
+    <%= link_to "Back", user_occasion_path(current_user, @occasion) %>
 </div>
 
 

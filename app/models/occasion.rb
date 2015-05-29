@@ -4,6 +4,8 @@ class Occasion < ActiveRecord::Base
   has_one :receiver
   belongs_to :gift
   validate :expiry_date_is_in_the_future
+  validates :description, presence: true
+  # validates :expiry_date, presence: true
 
   def expiry_date_is_in_the_future
     errors.add(:expiry_date, "can't be in the past or be today") if

@@ -18,16 +18,10 @@ class GiftsController < ApplicationController
   	end
   end
 
-
-
 #SHOW GIFTS (ALL OF THEM)
- def index
+  def index
     @occasion = Occasion.find params[:occasion_id]
  	  @gifts = Gift.all
- end
-
- def show
-
   end
 
 #REMOVE

@@ -1,6 +1,5 @@
 class OccasionsController < ApplicationController
   before_action :authenticate_user!
-  #before_action :get_occasions, only: %i(index)
 
 #CREATE
   def new

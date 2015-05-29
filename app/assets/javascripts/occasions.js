@@ -16,9 +16,11 @@
 
 
 
-//for receivers info
+
 $(document).ready(function(){
+//for receivers info
   $('.modal-trigger').leanModal();
+// for a new user in occasion
   $('#add-user').click(function(){
     $('#person_name').val();
     $('#modal2').openModal();

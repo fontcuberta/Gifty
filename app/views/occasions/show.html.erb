@@ -1,153 +1,147 @@
   <%= javascript_include_tag 'occasions', 'data-turbolinks-track' => true %>
 <section class="row">
-<article class="col s8">
-	<div>
-		<h1><%= @occasion.description %></h1>
-	</div>
+    <article class="col s8">
+	      <div>
+		        <h1><%= @occasion.description %></h1>
+	      </div>
+        <div class="occasion-receiver">
+          <% if @occasion.receiver %>
+            <h4 class="receiver">To: <%= @occasion.receiver.name %></h4>
+          <% else %>
 
-<div class="occasion-receiver">
-  <% if @occasion.receiver %>
-    <h4 class="receiver">To: <%= @occasion.receiver.name %></h4>
-  <% else %>
+            <!--  FORM FOR RECEIVER -->
+            <span>Who's getting the gift?</span>
+            <button data-target="modal1" class="btn modal-trigger button">Add receiver</button>
+            <!--  END OF FORM-->
+          <% end %>
+        </div>    
 
- <!--  FORM FOR RECEIVER -->
-    <span>Who's getting the gift?</span>
-    <button data-target="modal1" class="btn modal-trigger button">✓</button>
-<!--  END OF FORM-->
-  <% end %>
-</div>    
+        <!-- MODAL CODE FOR RECEIVERS Info -->
+        <div id="modal1" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Receiver's Info for <%= @occasion.description %></h4>
+                <%= form_for [@occasion, @receiver], url: receivers_path(@occasion) do |form| %>
+                    <fieldset class="fields">
+                        <div class="field">
+                            <%= form.label :name %>
+                            <%= form.text_field :name %>
+                        </div>
 
-    <!-- THIS IS THE MODAL CODE. PLEASE REMOVE EVERYTHING IF THIS IS TOO MUCH!!! -->
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal modal-fixed-footer">
-      <div class="modal-content">
-        <h4>Receiver's Info for <%= @occasion.description %></h4>
+                        <div class="field">
+                            <%= form.label :email %>
+                            <%= form.text_field :email %>
+                        </div>
 
-         <%= form_for [@occasion, @receiver], url: receivers_path(@occasion) do |form| %>
-        <fieldset class="fields">
-          <div class="field">
-           <%= form.label :name %>
-           <%= form.text_field :name %>
-          </div>
+                        <div class="field">
+                            <%= form.label :phone %>
+                            <%= form.text_field :phone %>
+                        </div>
 
-          <div class="field">
-              <%= form.label :email %>
-                <%= form.text_field :email %>
+                        <div class="field">
+                            <%= form.label :address %>
+                            <%= form.text_area :address %>
+                        </div>
+                    </fieldset>
             </div>
-              <div class="field">
-               <%= form.label :phone %>
-               <%= form.text_field :phone %>
-              </div>
 
-              <div class="field">
-               <%= form.label :address %>
-               <%= form.text_area :address %>
-              </div>
-          </fieldset>
-
-      </div>
-
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><%= form.submit "OK" %></a>
-         <% end %>
-      </div>
-    </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat "><%= form.submit "OK" %></a>
+                  <% end %>
+            </div>
+        </div>
     <!-- END OF THE MODAL CODE!!! -->
 
 <section class="friends-in-event">
 		<h2>Friends in this event</h2>
-
         <ul class="collection">
 			    <% @occasion.users.each do |user_in_event|%>
             <li class="collection-item avatar user-width">
-
               <%= image_tag user_in_event.avatar.url(:thumb), class: "circle avatar z-depth-1"  %>
               <span class="title"><%= user_in_event.name%></span>
               <p id = "remove-user"><%= link_to 'Remove', happenings_path(user_in_event, @occasion), method: :delete %></p>
               <a href="#!" class="secondary-content"><i class="mdi-action-grade"></i></a>
             </li>
-			<% end %>
-      </ul>
-            <i class='mdi-social-person-add' id="add-user">Add more friends</i>
+			    <% end %>
+        </ul>
+        <i class='mdi-social-person-add' id="add-user">Add more friends</i>
 </section>
 
     <!-- THIS IS THE MODAL CODE TO ADD A USER!!! -->
     <div id="modal2" class="modal modal-fixed-footer">
-      <div class="modal-content">
-        <h4>Add a member</h4>
-        <h2>Your friends</h2>
+        <div class="modal-content">
+            <h4>Add a member</h4>
+            <h2>Your friends</h2>
             <ul class="collection">
                 <% @users.each do |user|%>
                   <% unless @occasion.users.include? user %>
                       <li class="collection-item avatar select-friend">
                         <a href=<%= new_happening_path(user, @occasion)%>><%= image_tag user.avatar.url(:thumb), class: "circle avatar z-depth-1" %> <span class="title"><%= user.name%></span></a>
                       </li>
-                    <% end %>
+                  <% end %>
                 <% end %>
             </ul>
-      </div>
-
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat " id="close-add-user">OK</a>
-      </div>
+        </div>
+        <div class="modal-footer">
+            <span class="modal-action modal-close waves-effect waves-green btn-flat " id="close-add-user"><%= link_to 'OK', user_occasion_path(current_user, @occasion) %></span>
+        </div>
     </div>
     <!-- END OF THE MODAL CODE FOR ADDING A USER!!! -->
 
-    <!-- THIS IS THE MODAL CODE TO ALERT THIS EVENT IS EXPIRED!!! -->
-
-         <%= render 'expired_alert' %>
-
-
-    <!-- END OF THE MODAL CODE TO ALERT THIS EVENT IS EXPIRED!!! -->
+  <!-- THIS IS THE MODAL CODE TO ALERT THIS EVENT IS EXPIRED!!! -->
+    <%= render 'expired_alert' %>
+  <!-- END OF THE MODAL CODE TO ALERT THIS EVENT IS EXPIRED!!! -->
 
 
 
-	<small> Deadline: <%= @occasion.expiry_date.strftime("%A %d, %b %Y") %></small><br/>
-</article>
+	      <h6> Deadline: <%= @occasion.expiry_date.strftime("%A %d, %b %Y") %></h6><br/>
+    </article>
 
 
     <!-- GIFT SECTION -->
-  <aside class="aside col s4">
-     <h4>Your Gift</h4>    
-     <% if @occasion.gift %>
-         <%= render 'gift', {gift: @occasion.gift, occasion: @occasion} %>
-     <% else %> 
-         <%= render 'gift_default' %>
-     <% end %>
-  </aside>
-<div>
+    <aside class="aside col s4">
+        <h4>Your Gift</h4>    
+        <% if @occasion.gift %>
+          <%= render 'gift', {gift: @occasion.gift, occasion: @occasion} %>
+        <% else %> 
+          <%= render 'gift_default' %>
+        <% end %>
+    </aside>
+    <div>
 
-
-<div class="buy-now"><a href = "http://www.amazon.com" target="_blank"><%= image_tag "buy.png"  %></a></div>
+    <!-- BUY NOW!!! -->
+    <div id="buy-now" class="buy-now hidden">
+        <a href = "http://www.elcorteingles.es/ocio" target="_blank"><%= image_tag "buy.png"  %></a>
+    </div>
 </section>
+    <!-- END!!! -->
 
-<div id="navigation">
-  <span class="element-nav">
-    <%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %></span>
-
-  <span class="element-nav">
-    <i class="mdi-image-lens tiny"></i></span>
-
-  <span class="element-nav">
-    <%= link_to "Back", occasions_index_path %>
-  </span>
-</div>
+    <div id="navigation">
+        <span class="element-nav">
+            <%= link_to 'Delete Event', user_occasion_path(current_user, @occasion), method: :delete, data: {confirm: 'Are you sure?'} %>
+        </span>
+        <span class="element-nav">
+            <i class="mdi-image-lens tiny"></i>
+        </span>
+        <span class="element-nav">
+            <%= link_to "Back", occasions_index_path %>
+        </span>
+    </div>
 
 <script>
-$(document).ready(function(){
-  var currentDate = new Date();
-  var exp_date = new Date(<%= @occasion.expiry_date.to_f*1000%>);
-  if (currentDate < exp_date) {
-  }
-  else {
-    $('#change_gift').attr("class", "disabled");
-    $('#remove_gift').attr("class", "disabled");
-    $('#add-user').hide();
-    $('#remove-user').hide();
-    $('#modal_expired_alert').openModal();
-    $('#buy-now').show();
-  }
-});
+    $(document).ready(function(){
+        var currentDate = new Date();
+        var exp_date = new Date(<%= @occasion.expiry_date.to_f*1000%>);
+        if (currentDate < exp_date) {
+        }
+        else {
+            $('#change_gift').attr("class", "disabled");
+            $('#remove_gift').attr("class", "disabled");
+            $('#add-user').hide();
+            $('#remove-user').hide();
+            $('#modal_expired_alert').openModal();
+            $('#buy-now').removeClass('hidden');
+        }
+    });
 </script>
 
 

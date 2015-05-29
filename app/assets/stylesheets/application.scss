@@ -23,6 +23,7 @@ I need. For now, I just wanna know how materialize works*/
 @import "materialize/components/mixins";
 
 @import "materialize/components/color";
+$secondary-color: color("grey", "lighten-2") !default;
 // Variables;
 @import "materialize/components/variables";
 
@@ -62,12 +63,9 @@ a {
 
 .active {
   color: #AF282D !important;
+  font-size: 18px;
 }
 
-.textarea.materialize-textarea {
-  border-bottom: 1px solid #AF282D !important;
-  box-shadow: none !important;
-}
 
 body:before { 
   content: "";
@@ -221,5 +219,9 @@ background-size: cover;
 h4 {
   margin-left: 40px;
   color: white !important;
+}
+
+.hidden {
+  display: none;
 }
 
