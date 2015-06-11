@@ -11,10 +11,9 @@
 //     $('#remove_gift').attr("class", "disabled");
 //     $('#add-user').hide();
 //     $('#modal_expired_alert').openModal();
+//        $('#buy-now').removeClass('hidden');
 //   }
 // });
-
-
 
 
 $(document).ready(function(){
@@ -25,8 +24,19 @@ $(document).ready(function(){
     $('#person_name').val();
     $('#modal2').openModal();
   });
+    var currentDate = new Date();
+    console.log(currentDate);
 });
 
+function check_if_expired() {
+  var currentDate = new Date();
+  if (currentDate < exp_date) {
+    console.log('Hola cabeza de chola');
+  }
+  else {
+    console.log('Hola cocacola');
+  } 
+}
 
 
 

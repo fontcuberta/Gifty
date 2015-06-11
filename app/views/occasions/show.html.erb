@@ -128,20 +128,7 @@
     </div>
 
 <script>
-    $(document).ready(function(){
-        var currentDate = new Date();
-        var exp_date = new Date(<%= @occasion.expiry_date.to_f*1000%>);
-        if (currentDate < exp_date) {
-        }
-        else {
-            $('#change_gift').attr("class", "disabled");
-            $('#remove_gift').attr("class", "disabled");
-            $('#add-user').hide();
-            $('#remove-user').hide();
-            $('#modal_expired_alert').openModal();
-            $('#buy-now').removeClass('hidden');
-        }
-    });
+
 </script>
 
 

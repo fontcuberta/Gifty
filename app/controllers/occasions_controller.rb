@@ -52,7 +52,7 @@ class OccasionsController < ApplicationController
     occasion.destroy
     redirect_to occasions_index_path(@user)
   end
-
+  
 
 #--------------------------------
 #Private Methods
@@ -64,6 +64,7 @@ class OccasionsController < ApplicationController
   def get_occasions
     @occasions = current_user.occasions
   end
-
 end
+
+
 
